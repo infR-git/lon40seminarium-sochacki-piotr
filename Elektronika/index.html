@@ -1,187 +1,83 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<title>Pola i obwody figur</title>
-
-<style>
-body {
-    background-color: #d9d9d9;
-    font-family: Arial;
-    text-align: center;
-}
-
-.main {
-    width: 600px;
-    margin: 40px auto;
-    background-color: #efe8c8;
-    padding: 20px;
-    border: 6px solid black;
-}
-
-h1 {
-    color: darkred;
-    font-style: italic;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.box {
-    background-color: #e6db7f;
-    padding: 15px;
-    border-radius: 8px;
-    border: 2px solid #4a86e8;
-}
-
-input {
-    width: 120px;
-    margin: 5px 0;
-}
-
-button {
-    margin-top: 8px;
-    cursor: pointer;
-}
-.result {
-    margin-top: 8px;
-    font-weight: bold;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <title>Części Elektroniczne</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .main {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; }
+        .list-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .item-link {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .item-link:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        .back-home {
+            margin-top: 40px;
+            display: inline-block;
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .back-home:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
 
 <div class="main">
-<h1>Strona do obliczania pól i obwodów figur geometrycznych</h1>
+    <h1>Części Elektroniczne</h1>
+    <p>Wybierz podzespół, aby dowiedzieć się o nim więcej:</p>
 
-<div class="container">
+    <div class="list-container">
+        <a class="item-link" href="Części elektroniczne/Czujnik-magnetyczny-kontaktron.html">Czujnik magnetyczny</a>
+        <a class="item-link" href="Części elektroniczne/Czujnik-ultradźwiękowy.html">Czujnik ultradźwiękowy</a>
+        <a class="item-link" href="Części elektroniczne/Dioda-LED.html">Dioda LED</a>
+        <a class="item-link" href="Części elektroniczne/Enkoder-inkrementalny.html">Enkoder inkrementalny</a>
+        <a class="item-link" href="Części elektroniczne/Fotorezystor.html">Fotorezystor</a>
+        <a class="item-link" href="Części elektroniczne/Klawiatura-alfanumeryczna-4x4.html">Klawiatura 4x4</a>
+        <a class="item-link" href="Części elektroniczne/Kondensator.html">Kondensator</a>
+        <a class="item-link" href="Części elektroniczne/Mikroswitch.html">Mikroswitch</a>
+        <a class="item-link" href="Części elektroniczne/Potencjometr.html">Potencjometr</a>
+        <a class="item-link" href="Części elektroniczne/Przekaźnik.html">Przekaźnik</a>
+        <a class="item-link" href="Części elektroniczne/Rezystor.html">Rezystor</a>
+        <a class="item-link" href="Części elektroniczne/Servo-SG-90.html">Servo SG-90</a>
+        <a class="item-link" href="Części elektroniczne/Silnik-krokowy.html">Silnik krokowy</a>
+        <a class="item-link" href="Części elektroniczne/Wyświetlacz-LCD.html">Wyświetlacz LCD</a>
+        <a class="item-link" href="Części elektroniczne/Wyświetlacz-siedmiosegmentowy.html">Wyświetlacz 7-segmentowy</a>
+    </div>
 
-<!-- Prostokąt -->
-<div class="box">
-<h3>Prostokąt</h3>
-Długość boku a = <br>
-<input type="number" id="pa"><br>
-Długość boku b = <br>
-<input type="number" id="pb"><br>
-<button onclick="prostokat()">Oblicz</button>
-<div class="result" id="wynikProstokat"></div>
+    <a href="/" class="back-home">Wróć do strony głównej</a>
 </div>
-
-<!-- Trójkąt -->
-<div class="box">
-<h3>Trójkąt</h3>
-Długość podstawy a = <br>
-<input type="number" id="ta"><br>
-Wysokość h = <br>
-<input type="number" id="th"><br>
-<button onclick="trojkat()">Oblicz</button>
-<div class="result" id="wynikTrojkat"></div>
-</div>
-
-<!-- Trapez -->
-<div class="box">
-<h3>Trapez</h3>
-Długość podstawy a = <br>
-<input type="number" id="tra"><br>
-Długość podstawy b = <br>
-<input type="number" id="trb"><br>
-Wysokość h = <br>
-<input type="number" id="trh"><br>
-<button onclick="trapez()">Oblicz</button>
-<div class="result" id="wynikTrapez"></div>
-</div>
-
-<!-- Okrąg -->
-<div class="box">
-<h3>Okrąg</h3>
-Promień r = <br>
-<input type="number" id="r"><br>
-<button onclick="okrag()">Oblicz</button>
-<div class="result" id="wynikOkrag"></div>
-</div>
-
-</div>
-</div>
-
-<div style="margin-top: 20px;">
-    <a href="/" style="color: blue; text-decoration: underline;">Wróć do strony głównej</a>
-</div>
-
-<script>
-
-// PROSTOKĄT
-function prostokat() {
-    let a = Number(document.getElementById("pa").value);
-    let b = Number(document.getElementById("pb").value);
-
-    if (a <= 0 || b <= 0) {
-        alert("Podaj poprawne wartości!");
-        return;
-    }
-
-    let pole = a * b;
-    let obwod = 2 * a + 2 * b;
-
-    document.getElementById("wynikProstokat").innerHTML =
-        "Pole = " + pole + "<br>Obwód = " + obwod;
-}
-
-// TRÓJKĄT
-function trojkat() {
-    let a = Number(document.getElementById("ta").value);
-    let h = Number(document.getElementById("th").value);
-
-    if (a <= 0 || h <= 0) {
-        alert("Podaj poprawne wartości!");
-        return;
-    }
-
-    let pole = (a * h) / 2;
-
-    document.getElementById("wynikTrojkat").innerHTML =
-        "Pole = " + pole;
-}
-
-// TRAPEZ
-function trapez() {
-    let a = Number(document.getElementById("tra").value);
-    let b = Number(document.getElementById("trb").value);
-    let h = Number(document.getElementById("trh").value);
-
-    if (a <= 0 || b <= 0 || h <= 0) {
-        alert("Podaj poprawne wartości!");
-        return;
-    }
-
-    let pole = ((a + b) * h) / 2;
-
-    document.getElementById("wynikTrapez").innerHTML =
-        "Pole = " + pole;
-}
-
-// OKRĄG
-function okrag() {
-    let r = Number(document.getElementById("r").value);
-
-    if (r <= 0) {
-        alert("Podaj poprawny promień!");
-        return;
-    }
-
-    let pole = Math.PI * r * r;
-    let obwod = 2 * Math.PI * r;
-
-    document.getElementById("wynikOkrag").innerHTML =
-        "Pole = " + pole.toFixed(2) +
-        "<br>Obwód = " + obwod.toFixed(2);
-}
-
-</script>
 
 </body>
 </html>
