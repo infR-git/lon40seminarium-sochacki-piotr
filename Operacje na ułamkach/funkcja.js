@@ -47,20 +47,20 @@ function skroc() {
 // DODAWANIE
 // =========================
 function dodaj() {
-    let n1 = Number(document.getElementById("num2").value);
-    let d1 = Number(document.getElementById("den2").value);
-    let n2 = Number(document.getElementById("num3").value);
-    let d2 = Number(document.getElementById("den3").value);
+    let n1 = document.getElementById("num2").value;
+    let d1 = document.getElementById("den2").value;
+    let n2 = document.getElementById("num3").value;
+    let d2 = document.getElementById("den3").value;
 
-    if (
-        (!n1 && n1 !== 0) ||
-        (!d1 && d1 !== 0) ||
-        (!n2 && n2 !== 0) ||
-        (!d2 && d2 !== 0)
-    ) {
+    if (n1 === "" || d1 === "" || n2 === "" || d2 === "") {
         alert("Wypełnij wszystkie pola!");
         return;
     }
+
+    n1 = Number(n1);
+    d1 = Number(d1);
+    n2 = Number(n2);
+    d2 = Number(d2);
 
     if (d1 === 0 || d2 === 0) {
         alert("Mianownik nie może być zerem!");
@@ -85,4 +85,48 @@ function dodaj() {
 
     document.getElementById("wynikNum2").value = nowyLicznik;
     document.getElementById("wynikDen2").value = nowyMianownik;
+}
+
+// =========================
+// ODEJMOWANIE
+// =========================
+function odejmij() {
+    let n1 = document.getElementById("num4").value;
+    let d1 = document.getElementById("den4").value;
+    let n2 = document.getElementById("num5").value;
+    let d2 = document.getElementById("den5").value;
+
+    if (n1 === "" || d1 === "" || n2 === "" || d2 === "") {
+        alert("Wypełnij wszystkie pola!");
+        return;
+    }
+
+    n1 = Number(n1);
+    d1 = Number(d1);
+    n2 = Number(n2);
+    d2 = Number(d2);
+
+    if (d1 === 0 || d2 === 0) {
+        alert("Mianownik nie może być zerem!");
+        return;
+    }
+
+    // wspólny mianownik
+    let nowyLicznik = n1 * d2 - n2 * d1;
+    let nowyMianownik = d1 * d2;
+
+    // skracanie wyniku
+    let dzielnik = nwd(nowyLicznik, nowyMianownik);
+
+    nowyLicznik = nowyLicznik / dzielnik;
+    nowyMianownik = nowyMianownik / dzielnik;
+
+    // przenoszenie minusa
+    if (nowyMianownik < 0) {
+        nowyLicznik *= -1;
+        nowyMianownik *= -1;
+    }
+
+    document.getElementById("wynikNum3").value = nowyLicznik;
+    document.getElementById("wynikDen3").value = nowyMianownik;
 }
