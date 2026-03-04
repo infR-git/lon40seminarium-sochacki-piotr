@@ -12,9 +12,9 @@ app.use((req, res, next) => {
 // Simple API to get project info
 app.get('/api/projects', (req, res) => {
   res.json([
-    { id: 'A', name: 'Projekt A - Kalkulator Geometryczny', description: 'Obliczanie pól i obwodów figur.' },
-    { id: 'B', name: 'Projekt B', description: 'Placeholder dla projektu B.' },
-    { id: 'C', name: 'Projekt C', description: 'Placeholder dla projektu C.' }
+    { id: 'Elektronika', name: 'Elektronika', description: 'Elektronika' },
+    { id: 'Pola figur', name: 'Pola figur', description: 'Pola figur' },
+    { id: 'Operacje na ułamkach', name: 'Operacje na ułamkach', description: 'Operacje na ułamkach' }
   ]);
 });
 
